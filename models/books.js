@@ -18,6 +18,6 @@ const BookSchema = new Schema({
 });
 
 // create modal using mongoose and the schema that was just created
-const Book = mongoose.Model("Books", BookSchema);
+const Books = mongoose.model("Books", BookSchema);
 
 module.exports = Books;
