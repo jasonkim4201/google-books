@@ -10,6 +10,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(logger("dev"));
 
+// if in production, serve up React's build folder in the client sub folder
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 app.use(routes);
 
 mongoose.Promise = Promise;
