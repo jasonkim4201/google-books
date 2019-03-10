@@ -18,7 +18,7 @@ class Search extends Component {
             title: book.volumeInfo.title,
             date: book.volumeInfo.publishedDate,
             description: book.volumeInfo.description,
-            image: book.volumeInfo.imageLinks.thumbnail,
+            image: book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail,
             link: book.volumeInfo.infoLink
           };
         });
@@ -89,6 +89,38 @@ class Search extends Component {
                   Search for a book
               </button>
               </form>
+            </div>
+            {/*  end form section */}
+            {/* begin book result section */}
+            <div className="col-12 col-sm-6 col-md-9">
+              {!this.state.booksList.length ? (<h2 className="text-center">Search for a book</h2>) : (
+                <React.Fragment>
+                  <h3>Search Results for: {this.state.searchTerm}</h3>
+                  <div className="row">
+                    {this.state.booksList.map(book => {
+                      return (
+                        <div className="col-12 col-md-6" key={book.bookId}>
+                          <div className="card">
+                          <img src={book.image} alt={book.title} className="card-img-top" />
+                          <div className="card-body">
+                            <h5 className="card-title">{book.title}</h5>
+                            <p className="card-text">Released: {book.date}</p>
+                            {book.authors && <p className="card-text">By: {book.authors.join(", ")}</p> }
+                            <p className="card-text"><strong>Description</strong>: {book.description}</p>
+
+                            
+                              <a href={book.link} rel="noopener noreferrer" target="_blank" className="btn btn-success btn-sm">See more.</a>
+                              <button onClick={() => this.saveBook(book.bookId)} className="btn btn-dark btn-sm">Save book.</button>
+                            
+
+                          </div>
+                        </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </React.Fragment>
+              )}
             </div>
           </div>
         </div>
