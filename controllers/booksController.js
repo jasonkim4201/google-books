@@ -7,7 +7,7 @@ module.exports = {
       .catch(error => {
         console.log(error);
         res.json(error);
-      })
+      });
   },
   findById(req, res) {
     db.Books.findById(req.params.id)
@@ -18,7 +18,7 @@ module.exports = {
       })
   },
   saveBook(req, res) {
-    db.Books.insert(req.body)
+    db.Books.create(req.body)
       .then(dbBooks => res.json(dbBooks))
       .catch(error => {
         console.log(error);
