@@ -101,7 +101,7 @@ class Search extends Component {
                       return (
                         <div className="col-12 col-md-6" key={book.bookId}>
                           <div className="card">
-                          <img src={book.image} alt={book.title} className="card-img-top" />
+                          <img src={book.image} alt={book.title} className="card-img-top mx-auto" />
                           <div className="card-body">
                             <h5 className="card-title">{book.title}</h5>
                             <p className="card-text">Released: {book.date}</p>

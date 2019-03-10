@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
-
+import "./style.css";
 class Saved extends Component {
   state = {
     booksList: []
@@ -48,7 +48,7 @@ class Saved extends Component {
                         return (
                           <div className="col-12 col-md-4" key={book._id}>
                             <div className="card">
-                              <img src={book.image} alt={book.title} className="card-img-top" />
+                              <img src={book.image} alt={book.title} className="card-img-top mx-auto" />
                               <div className="card-body">
                                 <h5 className="card-title">{book.title}</h5>
                                 <p className="card-text">Released: {book.date}</p>
@@ -61,10 +61,10 @@ class Saved extends Component {
                                   href={book.link}
                                   rel="noopener noreferrer"
                                   target="_blank"
-                                  className="btn btn-success btn-small">
+                                  className="btn btn-success btn-sm">
                                   See More.
                               </a>
-                                <button onClick={() => this.deleteBook(book._id)} className="btn btn-dark btn-small">
+                                <button onClick={() => this.deleteBook(book._id)} className="btn btn-dark btn-sm">
                                   Delete Book.
                               </button>
                                 <Link to={`/saved/${book._id}`} className="btn btn-block btn-danger">View Book</Link>
