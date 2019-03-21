@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
 import "./style.css";
+
 class Saved extends Component {
   state = {
     booksList: []
@@ -20,14 +21,14 @@ class Saved extends Component {
 
   deleteBook = bookId => {
     API.deleteBook(bookId)
-      .then(res => this.getBooks)
+      .then(res => this.getBooks())
       .catch(error => console.log(error));
   }
 
   render() {
     return (
       <React.Fragment>
-        {/* make jumbotron */}
+        {/* make jumbotron */}  
         <div className="jumbotron jumbotron-fluid bg-dark text-light">
           <div className="container-fluid">
             <h1>View Saved Books Here</h1>
